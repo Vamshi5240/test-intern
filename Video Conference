@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conferencing</title>
+</head>
+<body>
+   
+<style>
+    h1 {
+        background-color: #ff0000;
+        color: #ffffff;
+        padding: 10px;
+    }
+    </style>
+    <h1>
+        Video Conference 
+    </h1>
+    <div id="video-container">
+        <video id="local-video" autoplay></video>
+        <video id="remote-video" autoplay></video>
+    </div>
+    <div id="chat-box">
+        <div id="chat-messages"></div>
+        <input type="text" id="chat-input" placeholder="Type your message">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <button id="start-recording" onclick="startRecording()">Start Recording</button>
+    <button id="stop-recording" onclick="stopRecording()" style="display: none;">Stop Recording</button>
+
+    <script>
+    
+    </script>
+</body>
+<pr>
+    
+</pr>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat and Video</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="chat">
+        <div id="chat-messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+    <div id="video">
+        <video id="local-video" autoplay></video>
+        <video id="remote-video" autoplay></video>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
 
