@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Editor</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <style>
+    h1
+    {
+        background-color: #ff0000;
+        color: #ffffff;
+        padding:5px;
+    }
+    </style>
+        <h1>
+
+        Content Management Tool
+        
+    </h1>
+
+    <h2>Blog Editor</h2>
+<p>
+    <!-- Text Editor -->
+    <textarea id="text-editor" placeholder="Write your blog post here..."></textarea>
+
+    <!-- Image Upload -->
+    <input type="file" id="image-upload" accept="image/*">
+    <img id="preview-image" src="" alt="Image Preview" style="display: none; max-width: 100%;">
+</p>
+<p>
+    <!-- Video Embed -->
+    <input type="text" id="video-url" placeholder="Paste video URL here">
+    <div id="video-preview" style="display: none;">
+        <!-- You can display a video player here -->
+    </div>
+
+    <!-- Add Element Button -->
+    <button onclick="addElement()">Add Element</button>
+
+    <!-- Blog Post Preview -->
+    <div id="blog-post-preview"></div>
+
+    <script>
+        function addElement() {
+            const textContent = document.getElementById("text-editor").value;
+            const imageSrc = document.getElementById("preview-image").src;
+            const videoUrl = document.getElementById("video-url").value;
+
+            // Create elements based on user input
+            const blogPostPreview = document.getElementById("blog-post-preview");
+
+            if (textContent) {
+                const paragraph = document.createElement("p");
+                paragraph.textContent = textContent;
+                blogPostPreview.appendChild(paragraph);
+            }
+
+            if (imageSrc) {
+                const image = document.createElement("img");
+                image.src = imageSrc;
+                blogPostPreview.appendChild(image);
+            }
+
+            if (videoUrl) {
+                const video = document.createElement("iframe");
+                video.src = videoUrl;
+                video.width = "640";
+                video.height = "360";
+                blogPostPreview.appendChild(video);
+            }
+
+            // Clear input fields
+            document.getElementById("text-editor").value = "";
+            document.getElementById("preview-image").src = "";
+            document.getElementById("video-url").value = "";
+            document.getElementById("video-preview").style.display = "none";
+        }
+
+        // Preview image when selected
+        document.getElementById("image-upload").addEventListener("change", function () {
+            const previewImage = document.getElementById("preview-image");
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function () {
+                previewImage.src = reader.result;
+                previewImage.style.display = "block";
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        // Show video preview
+        document.getElementById("video-url").addEventListener("input", function () {
+            const videoPreview = document.getElementById("video-preview");
+            const videoUrl = this.value.trim();
+
+            if (videoUrl) {
+                videoPreview.innerHTML = `<iframe width="640" height="360" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+                videoPreview.style.display = "block";
+            } else {
+                videoPreview.innerHTML = "";
+                videoPreview.style.display = "none";
+            }
+        });
+    </script>
+</p>
+</body>
+</html>
